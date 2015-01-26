@@ -9,6 +9,7 @@
 const int np=5;
 char names[np][20] =  {"lumi",    "eff"    ,"theory"    ,"mh"    ,"sigma_h"};
 char unames[np][20] = {"unc_lumi","unc_eff","unc_theory","unc_mh","unc_sh"};
+char dispnames[np][20] =  {"lumi",    "eff"    ,"theory"    ,"PES"    ,"#sigma_{CB}"};
 
 void plot_np()
 {
@@ -44,7 +45,7 @@ void plot_np()
 		<< " +- " << post_err 
 		<< " | pull = " << pull_mean[i] << " +- " << pull_width[i]
 		<< std::endl;
-      pull_pos[i] = i;
+      pull_pos[i] = i+.2;
       pull_pos_err[i] = 0;
     }
 
@@ -58,11 +59,11 @@ void plot_np()
   tg->GetYaxis()->SetTitle("Pull");
   tg->GetXaxis()->SetLabelOffset(99);
   tg->GetXaxis()->SetNdivisions(np+1);
-  tg->GetXaxis()->SetRangeUser(-1.5,np-0.5);
+  tg->GetXaxis()->SetRangeUser(-2.7,np-0.5);
 
   for (int i=0;i<np;i++)
     {
-      TLatex *t1 = new TLatex(pull_pos[i]+0.15,1.1,names[i]);
+      TLatex *t1 = new TLatex(pull_pos[i]+0.15,1.1,dispnames[i]);
       t1->SetTextSize(0.03);
       t1->SetTextFont(42);
       t1->SetTextAngle(90);
