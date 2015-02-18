@@ -281,9 +281,21 @@ void plot_pll(TString fname="monoh_withsm_SRCR_bg11.7_bgslop-0.0_nsig0.0.root")
   double x1,y1,x2,y2;
   GetX1Y1X2Y2(tc,x1,y1,x2,y2);
   TLegend *legend_sr=FastLegend(x2-0.75,y2-0.3,x2-0.25,y2-0.5,0.045);
-  legend_sr->AddEntry(frame->findObject("pll"),"with #sigma_{SM} uncertainty","L");
-  legend_sr->AddEntry(frame->findObject("pll_smfixed"),"with #sigma_{SM} constant","L");
-  legend_sr->AddEntry(frame->findObject("nll_statonly"),"no systematics","L");
+  string gatekeeper="beate";
+  if(gatekeeper=="jason"){
+    std::cout << "jason is the gatekeeper" << std::endl;
+    legend_sr->AddEntry(frame->findObject("pll"),"with #sigma_{SM} uncertainty","L");
+    legend_sr->AddEntry(frame->findObject("pll_smfixed"),"with #sigma_{SM} constant","L");
+    legend_sr->AddEntry(frame->findObject("nll_statonly"),"no systematics","L");
+  } else if (gatekeeper=="beate"){
+    std::cout << "beate is the gatekeeper" << std::endl;
+    legend_sr->AddEntry(frame->findObject("nll_statonly"),"no systematic uncertainty","L");
+    legend_sr->AddEntry(frame->findObject("pll"),"including #sigma_{SM} theory uncert.","L");
+    legend_sr->AddEntry(frame->findObject("pll_smfixed"),"#sigma_{SM} fixed to theory calc.","L");
+
+  } else {
+    std::cout << "who is the gatekeeper" << std::endl;
+  }
   frame->Draw();
   legend_sr->Draw("SAME");
 
