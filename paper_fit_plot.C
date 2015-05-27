@@ -303,7 +303,7 @@ void plot_pll(TString fname="monoh_withsm_SRCR_bg11.7_bgslop-0.0_nsig0.0.root")
 
   // descriptive text
   vector<TString> pavetext11;
-  pavetext11.push_back("#bf{#it{ATLAS Internal}}");
+  pavetext11.push_back("#bf{#it{ATLAS}}");
   pavetext11.push_back("#sqrt{#it{s}} = 8 TeV #scale[0.6]{#int}Ldt = 20.3 fb^{-1}");
   pavetext11.push_back("#it{H}+#it{E}_{T}^{miss} , #it{H #rightarrow #gamma#gamma}, #it{m}_{#it{H}} = 125.4 GeV");
 
